@@ -58,12 +58,12 @@ void set_mode(){
 }
 
 void reach_max(){
-  if (i==1.0) estado_max();
+  if (i==1.0) state = state_max;
   else estado_up();
 }
 
 void reach_min(){
-  if (i==1.0) estado_min();
+  if (i==1.0) state = state_min;
   else estado_down();
 }
 
