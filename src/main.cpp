@@ -52,14 +52,9 @@ void estado_fall(){
   btn.fall(&reach_min);
 }
 
-void estado_max(){
-  state = state_max;
-  btn.fall(&btn_transit);
-}
-
-void estado_min(){
-  state = state_min;
-  btn.fall(&btn_transit);
+void set_mode(){
+  if (state == state_up) estado_down();
+  else if (state == state_down) estado_up();
 }
 
 void reach_max(){
@@ -93,14 +88,19 @@ void btn_transit(){
   else if (state == state_min) estado_up();
 }
 
-void set_mode(){
-  if (state == state_up) estado_down();
-  else if (state == state_down) estado_up();
+void estado_max(){
+  state = state_max;
+  btn.fall(&btn_transit);
+}
+
+void estado_min(){
+  state = state_min;
+  btn.fall(&btn_transit);
 }
 
 int main() {
   estado_up();
-  btn.rise(&btn_transit)
+  btn.rise(&btn_transit);
   while(1) {
     wait_ms(100);
   }
